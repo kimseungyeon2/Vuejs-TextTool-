@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import Service from './api/service.js'
 Vue.use(Vuex)
 
-const service = new Service("http://localhost/");
+const service = new Service("http://localhost:3000/");
 
 export default new Vuex.Store({
   state: {
@@ -43,10 +43,10 @@ export default new Vuex.Store({
       commit('drag_text_mutation',payload);
     },
     upload_action: ({commit},payload) => {
-      return service.upload('project_1_back/upload.php',payload);
+      return service.upload('upload',payload);
     },
     file_call_action: ({commit},payload) =>{
-      return service.file_call('project_1_back/file_call.php',payload);
+      return service.file_call('call',payload);
     },
     content_action: ({commit},payload) =>{
       commit('content_mutation',payload);
@@ -55,10 +55,10 @@ export default new Vuex.Store({
       commit('text_box_mutation',payload);
     },
     search_words_action: ({commit},payload) =>{
-      return service.search_words("Capstone_practice/project_videoPlayer/api/test2.php",payload);
+      return service.search_words("analysis",payload);
     },
     search_word_action: ({commit},payload) =>{
-      return service.search_word("Capstone_practice/crolling/crolling_1.php",payload);
+      return service.search_word("crowling",payload);
     },
   }
 })

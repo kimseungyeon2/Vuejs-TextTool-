@@ -67,13 +67,11 @@ export default {
         alert('This is not TEXT FILE');
         return;
       } else {
-        let reader = new FileReader();
-        reader.onload = (e) => {
-          console.log(e.target.result);
-        }
-        reader.readAsDataURL(file);
-
-
+        // let reader = new FileReader();
+        // reader.onload = (e) => {
+        //   console.log(e.target.result);
+        // }
+        // reader.readAsDataURL(file);
         this.file_name = file.name;
       }
     },
@@ -86,7 +84,15 @@ export default {
     },
     on_upload(){
       this.upload_action(this.file).then(result => {
-        console.log(result);
+        console.log(result.originalname.split('.')[0]);
+        if(result){
+          this.$router.push({
+            name:'textTool',
+            query:{file: result.originalname.split('.')[0]}
+          });
+        }else{
+          this.$router.push({name:'home'});
+        }
       });
     }
   },

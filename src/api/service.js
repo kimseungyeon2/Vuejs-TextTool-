@@ -18,18 +18,17 @@ export default class Service {
     .catch(res=>{
       alert("server error");
     });
-
   }
   upload(request,data){//upload methods
-    this.form.append('data',data[0]);
+    this.form.append('file',data[0]);
     return this.post_axios(this.domain+request,this.form);
   }
   file_call(request,data){
     return this.get_axios(this.domain+request+"?data="+data);
   }
   search_words(request,data){
-    this.form.append('data',data);
-    return this.post_axios(this.domain+request,this.form);
+    // this.form.append('data',data);
+    return this.get_axios(this.domain+request+"?data="+data);
   }
   search_word(request,data){
     return this.get_axios(this.domain+request+"?word="+data);

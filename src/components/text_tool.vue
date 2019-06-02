@@ -10,9 +10,10 @@
                 contenteditable="true"
                 v-on:mouseup="drag_text($event)"
               >
-                <div class="" v-for="(tent,i) in c_getter" :key="i">
+              {{c_getter}}
+                <!-- <div class="" v-for="(tent,i) in c_getter" :key="i">
                   {{tent}}
-                </div>
+                </div> -->
               </div>
             </template>
             <span id="tooltip"></span>
@@ -122,7 +123,7 @@ export default {
       this.search_words_action(document.getElementById('tooltip').innerHTML).then(result => {
         for (let i = 0; i < result.length; i++) {
           this.words.push({
-            'text':result[i].text.content,
+            'text':result[i].content,
             'content':'',
           });
         }
@@ -152,7 +153,7 @@ export default {
   mounted:function(){
     this.text_box_action(document.getElementById('text_box'));
     this.file_call_action(this.$route.query.file).then(result=>{
-      this.content_action(result);
+      this.content_action(result);//text
     });
   },
   computed:{
